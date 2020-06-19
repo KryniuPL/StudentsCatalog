@@ -1,12 +1,18 @@
 package com.red;
 
-import com.red.repository.students.StudentsJsonRepositoryImpl;
-import com.red.repository.students.StudentsRepository;
+import com.red.model.Student;
+import java.util.UUID;
 
 public class StudentsCatalogApplication {
 
-    private StudentsRepository studentsRepository = new StudentsJsonRepositoryImpl();
-
     public void run() {
+        Student student = new Student(
+                UUID.randomUUID().toString()
+        );
+
+        System.out.println(student);
     }
+
+
+
 }
