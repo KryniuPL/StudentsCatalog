@@ -6,7 +6,7 @@ import java.io.File;
 
 public class ApplicationConfiguration {
 
-    static File studentsCollection = new File("C:\\Users\\dragak01\\Git\\StudentsCatalog\\src\\main\\resources\\students.json");
+    static File studentsCollection = new File("C:\\Git\\StudentsCatalog\\src\\main\\resources\\students.json");
 
     public static void prepareApplication() {
         JsonDBTemplate jsonDBTemplate = DataSourceConfiguration.jsonDBTemplate();
