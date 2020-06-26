@@ -4,6 +4,7 @@ import com.red.model.Student;
 import com.red.repository.students.StudentsJsonRepositoryImpl;
 import com.red.repository.students.StudentsRepository;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -13,6 +14,11 @@ public class StudentsService {
     private final StudentsRepository studentsRepository = new StudentsJsonRepositoryImpl();
     private static Scanner scanner = new Scanner(System.in);
 
+    // TODO: Exercise 2
+    // Limit size of the list to 10 objects
+    public List<Student> findAllStudents() {
+        return studentsRepository.findAll();
+    }
 
     public void createStudent(Student student) {
         Objects.requireNonNull(student.getId());
@@ -29,13 +35,6 @@ public class StudentsService {
         } else System.out.println("First name contains invalid characters. Student was not created.");
 
     }
-
-    // TODO: Exercise
-    // 1. Create student
-    // 2. Check if name is a correct string in separate method and invoke it in createStudent method
-
-//    private void checkIfStudentNameIsCorrect(String name) {
-//    }
 
     private boolean checkIfStudentNameIsCorrect(String firstName) {
         return Pattern.matches("[a-zA-Z]+", firstName);
