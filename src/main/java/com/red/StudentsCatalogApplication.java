@@ -5,8 +5,7 @@ import com.red.service.StudentsService;
 import java.util.List;
 import java.util.Scanner;
 
-import static com.red.utils.ConsoleUiUtils.showGreetingMessage;
-import static com.red.utils.ConsoleUiUtils.showMenuItems;
+import static com.red.utils.ConsoleUiUtils.*;
 
 public class StudentsCatalogApplication {
 
@@ -21,6 +20,9 @@ public class StudentsCatalogApplication {
     public void run() {
         showGreetingMessage();
         showMenuItems(menuItemList);
+        showQueryMessage();
+        getUserInput();
+
 
 //        while (true) {
 //
