@@ -1,6 +1,7 @@
 package com.red;
 
 import com.red.model.MenuItem;
+import com.red.model.Student;
 import com.red.service.StudentsService;
 import java.util.List;
 import java.util.Scanner;
@@ -19,22 +20,26 @@ public class StudentsCatalogApplication {
 
     public void run() {
         showGreetingMessage();
-        showMenuItems(menuItemList);
-        showQueryMessage();
-        getUserInput();
 
 
-//        while (true) {
-//
-//            // TODO: get user input from console
-//            int scannedInput = 1;
-//
-//            switch (scannedInput) {
-//                case 1:
-//                    studentsService.findAllStudents();
-//                    break;
-//                default: break;
-//            }
-//        }
+        while (true) {
+            showMenuItems(menuItemList);
+            showQueryMessage();
+            int scannedInput = getUserInput(menuItemList);
+
+            switch (scannedInput) {
+                case 1:
+                    studentsService.findAllStudents();
+                    break;
+                case 2:
+                    studentsService.createStudent(new Student());
+                    break;
+                case 3:
+                    System.exit(0);
+                default:
+                    System.out.println("DEFUALY");
+                    break;
+            }
+        }
     }
 }
