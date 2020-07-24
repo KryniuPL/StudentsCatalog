@@ -8,16 +8,25 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class StudentsService {
 
     private final StudentsRepository studentsRepository = new StudentsJsonRepositoryImpl();
     private static Scanner scanner = new Scanner(System.in);
 
-    // TODO: Exercise 2
-    // Limit size of the list to 10 objects
     public List<Student> findAllStudents() {
-        return studentsRepository.findAll();
+        return studentsRepository.findAll()
+                .stream()
+                .limit(10)
+                .collect(Collectors.toList());
+    }
+
+    public List<Student> findStudentsByName(String name) {
+        return studentsRepository.findAll()
+                .stream()
+                .filter(student -> student.getFirstName().equals(name))
+                .collect(Collectors.toList());
     }
 
     public void createStudent(Student student) {
