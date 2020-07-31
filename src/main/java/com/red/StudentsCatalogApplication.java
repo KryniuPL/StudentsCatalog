@@ -38,7 +38,6 @@ public class StudentsCatalogApplication {
                 default:
                     showOutOfRangeMessage();
                     continue;
-
             }
         }
     }

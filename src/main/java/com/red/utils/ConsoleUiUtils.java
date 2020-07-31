@@ -11,6 +11,15 @@ public class ConsoleUiUtils {
 
     private static Scanner scanner = new Scanner(System.in);
 
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_WHITE = "\u001B[37m";
     private static final String GREETING_MESSAGE = "<---------WELCOME IN STUDENTS CATALOG--------->";
     private static final String QUERY_MESSAGE = "Select an option: ";
     private static final String ERROR_MESSAGE = "ERROR";
@@ -22,14 +31,18 @@ public class ConsoleUiUtils {
 
     public static void showMenuItems(List<MenuItem> menuItemList) {
         menuItemList.forEach(menuItem -> {
-            System.out.println(menuItem.getIndex() + ". " + menuItem.getName());
+            System.out.println(ANSI_GREEN + menuItem.getIndex() + ". " + menuItem.getName() + ANSI_RESET);
         });
     }
 
     public static void showListOfStudents (List<Student> studentsList){
-        System.out.println(studentsList);
+        studentsList.forEach(student -> {
+            var index = studentsList.indexOf(student) + 1;
+            var firstName = student.getFirstName();
+            var secondName = student.getSecondName() == null ? "" : student.getSecondName();
+            System.out.println("[" + index + "] " + firstName + " " + secondName);
+        });
     }
-
 
     public static void showQueryMessage() {
         System.out.println(QUERY_MESSAGE);
@@ -48,8 +61,6 @@ public class ConsoleUiUtils {
 
         try {
             userInput = scanner.nextInt();
-
-
         } catch (InputMismatchException e) {
             showErrorMessage();
             userInput = 100;
