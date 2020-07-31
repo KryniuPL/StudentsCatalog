@@ -1,11 +1,11 @@
 package com.red.utils;
 
 import com.red.model.MenuItem;
+import com.red.model.Student;
 
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class ConsoleUiUtils {
 
@@ -26,6 +26,11 @@ public class ConsoleUiUtils {
         });
     }
 
+    public static void showListOfStudents (List<Student> studentsList){
+        System.out.println(studentsList);
+    }
+
+
     public static void showQueryMessage() {
         System.out.println(QUERY_MESSAGE);
     }
@@ -43,12 +48,8 @@ public class ConsoleUiUtils {
 
         try {
             userInput = scanner.nextInt();
-            List<Integer> indexesList = menuItems.stream().map(MenuItem::getIndex).collect(Collectors.toList());
 
-            if (!indexesList.contains(userInput)) {
-                showOutOfRangeMessage();
-                userInput = Integer.MAX_VALUE;
-            }
+
         } catch (InputMismatchException e) {
             showErrorMessage();
             userInput = 100;

@@ -5,7 +5,6 @@ import com.red.repository.students.StudentsJsonRepositoryImpl;
 import com.red.repository.students.StudentsRepository;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -29,8 +28,12 @@ public class StudentsService {
                 .collect(Collectors.toList());
     }
 
+    public List<Student> findStudentsByLimit(int limit){
+        return studentsRepository.findAll().parallelStream().limit(limit).collect(Collectors.toList());
+    }
+
     public void createStudent(Student student) {
-        Objects.requireNonNull(student.getId());
+//        Objects.requireNonNull(student.getId());
 
         System.out.println("Type student firstName: ");
         String firstName = scanner.next();
