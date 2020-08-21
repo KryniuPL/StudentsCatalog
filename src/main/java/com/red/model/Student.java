@@ -6,8 +6,9 @@ import java.time.LocalDate;
 
 @Document(collection = "students", schemaVersion= "1.0")
 public class Student {
+
     @Id
-    private String id;
+    private Long id;
     private String firstName;
     private String secondName;
     private Department department;
@@ -18,11 +19,7 @@ public class Student {
     public Student() {
     }
 
-    public Student(String id) {
-        this.id = id;
-    }
-
-    public Student(String id, String firstName, String secondName, Department department, LocalDate birthDate, int semester, boolean livesInDormitory) {
+    public Student(Long id, String firstName, String secondName, Department department, LocalDate birthDate, int semester, boolean livesInDormitory) {
         this.id = id;
         this.firstName = firstName;
         this.secondName = secondName;
@@ -32,11 +29,11 @@ public class Student {
         this.livesInDormitory = livesInDormitory;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

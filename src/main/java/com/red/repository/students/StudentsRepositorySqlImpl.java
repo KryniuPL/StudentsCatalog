@@ -9,7 +9,7 @@ public abstract class StudentsRepositorySqlImpl implements StudentsRepository {
     }
 
     @Override
-    public Student findById(String id) {
+    public Student findById(Long id) {
         return null;
     }
 }

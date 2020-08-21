@@ -7,5 +7,5 @@ public interface StudentsRepository {
 
     List<Student> findAll();
     void createStudent(Student student);
-    Student findById(String id);
+    Student findById(Long id);
 }

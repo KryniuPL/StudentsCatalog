@@ -3,25 +3,34 @@ package com.red;
 import com.red.model.MenuItem;
 import com.red.model.Student;
 import com.red.service.StudentsService;
-
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
-import static com.red.utils.ConsoleUiUtils.*;
+import static com.red.utils.ConsoleUiUtils.getUserInput;
+import static com.red.utils.ConsoleUiUtils.showGreetingMessage;
+import static com.red.utils.ConsoleUiUtils.showListOfStudents;
+import static com.red.utils.ConsoleUiUtils.showMenuItems;
+import static com.red.utils.ConsoleUiUtils.showOutOfRangeMessage;
+import static com.red.utils.ConsoleUiUtils.showQueryMessage;
 
 public class StudentsCatalogApplication {
 
     private static Scanner scanner = new Scanner(System.in);
     private static StudentsService studentsService = new StudentsService();
 
-    List<MenuItem> menuItemList = List.of(
-            new MenuItem(1, "Show all students"),
-            new MenuItem(2, "Create student")
-    );
+    private List<MenuItem> buildMenuItemLists(List<String> items) {
+        return items.stream()
+                .map(item -> {
+                    var index = items.indexOf(item) + 1;
+                    return new MenuItem(index, item);
+                })
+                .collect(Collectors.toList());
+    }
+    List<MenuItem> menuItemList = buildMenuItemLists(List.of("Show all students", "Find by id", "Create student", "Exit"));
 
     public void run() {
         showGreetingMessage();
-
 
         while (true) {
             showMenuItems(menuItemList);
@@ -33,8 +42,13 @@ public class StudentsCatalogApplication {
                     showListOfStudents(studentsService.findAllStudents());
                     break;
                 case 2:
+                    studentsService.findStudentById();
+                    break;
+                case 3:
                     studentsService.createStudent(new Student());
                     break;
+                case 4:
+                    System.exit(0);
                 default:
                     showOutOfRangeMessage();
                     continue;

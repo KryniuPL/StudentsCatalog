@@ -8,6 +8,7 @@ import java.util.List;
 public class StudentsJsonRepositoryImpl implements StudentsRepository {
 
     private final JsonDBTemplate jsonDBTemplate = DataSourceConfiguration.jsonDBTemplate();
+    static Long idIndex = 0L;
 
     @Override
     public List<Student> findAll() {
@@ -16,11 +17,13 @@ public class StudentsJsonRepositoryImpl implements StudentsRepository {
 
     @Override
     public void createStudent(Student student) {
+        student.setId(idIndex);
         jsonDBTemplate.insert(student);
+        idIndex++;
     }
 
     @Override
-    public Student findById(String id) {
+    public Student findById(Long id) {
         return jsonDBTemplate.findById(id, Student.class);
     }
 }

@@ -37,10 +37,9 @@ public class ConsoleUiUtils {
 
     public static void showListOfStudents (List<Student> studentsList){
         studentsList.forEach(student -> {
-            var index = studentsList.indexOf(student) + 1;
             var firstName = student.getFirstName();
             var secondName = student.getSecondName() == null ? "" : student.getSecondName();
-            System.out.println("[" + index + "] " + firstName + " " + secondName);
+            System.out.println("[" + student.getId() + "] " + firstName + " " + secondName);
         });
     }
 

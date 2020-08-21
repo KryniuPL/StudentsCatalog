@@ -3,7 +3,6 @@ package com.red.service;
 import com.red.model.Student;
 import com.red.repository.students.StudentsJsonRepositoryImpl;
 import com.red.repository.students.StudentsRepository;
-
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -17,7 +16,7 @@ public class StudentsService {
     public List<Student> findAllStudents() {
         return studentsRepository.findAll()
                 .stream()
-                .limit(10)
+                .limit(100)
                 .collect(Collectors.toList());
     }
 
@@ -28,13 +27,22 @@ public class StudentsService {
                 .collect(Collectors.toList());
     }
 
-    public List<Student> findStudentsByLimit(int limit){
+    public void findStudentById() {
+        System.out.println("Type student id: ");
+        Long id = scanner.nextLong();
+        Student student = studentsRepository.findById(id);
+
+        if (student != null) {
+            System.out.println("STUDENT FOUND");
+            System.out.println(student);
+        } else System.out.println("STUDENT NOT FOUND");
+    }
+
+    public List<Student> findStudentsByLimit(int limit) {
         return studentsRepository.findAll().parallelStream().limit(limit).collect(Collectors.toList());
     }
 
     public void createStudent(Student student) {
-//        Objects.requireNonNull(student.getId());
-
         System.out.println("Type student firstName: ");
         String firstName = scanner.next();
 
