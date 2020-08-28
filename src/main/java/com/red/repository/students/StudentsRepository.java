@@ -7,5 +7,6 @@ public interface StudentsRepository {
 
     List<Student> findAll();
     void createStudent(Student student);
+    void removeStudent(Student student);
     Student findById(Long id);
 }

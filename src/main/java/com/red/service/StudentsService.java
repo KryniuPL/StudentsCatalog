@@ -3,6 +3,7 @@ package com.red.service;
 import com.red.model.Student;
 import com.red.repository.students.StudentsJsonRepositoryImpl;
 import com.red.repository.students.StudentsRepository;
+
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -32,6 +33,7 @@ public class StudentsService {
         Long id = scanner.nextLong();
         Student student = studentsRepository.findById(id);
 
+
         if (student != null) {
             System.out.println("STUDENT FOUND");
             System.out.println(student);
@@ -56,7 +58,20 @@ public class StudentsService {
 
     }
 
+    public void deleteStudentByID() {
+        System.out.println("Type student id: ");
+        Long id = scanner.nextLong();
+        Student student = studentsRepository.findById(id);
+
+        if (student != null) {
+            System.out.println("STUDENT FOUND");
+            studentsRepository.removeStudent(student);
+            System.out.println("Student " + student.getFirstName() + " was deleted");
+        } else System.out.println("STUDENT NOT FOUND");
+    }
+
     private boolean checkIfStudentNameIsCorrect(String firstName) {
         return Pattern.matches("[a-zA-Z]+", firstName);
     }
+
 }

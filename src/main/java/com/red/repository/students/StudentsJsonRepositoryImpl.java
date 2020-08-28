@@ -23,6 +23,11 @@ public class StudentsJsonRepositoryImpl implements StudentsRepository {
     }
 
     @Override
+    public void removeStudent(Student student) {
+        jsonDBTemplate.remove(student,Student.class);
+    }
+
+    @Override
     public Student findById(Long id) {
         return jsonDBTemplate.findById(id, Student.class);
     }

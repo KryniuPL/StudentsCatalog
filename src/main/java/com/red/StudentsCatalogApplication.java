@@ -3,6 +3,7 @@ package com.red;
 import com.red.model.MenuItem;
 import com.red.model.Student;
 import com.red.service.StudentsService;
+
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -27,7 +28,10 @@ public class StudentsCatalogApplication {
                 })
                 .collect(Collectors.toList());
     }
-    List<MenuItem> menuItemList = buildMenuItemLists(List.of("Show all students", "Find by id", "Create student", "Exit"));
+
+    List<MenuItem> menuItemList = buildMenuItemLists(List.of("Show all students", "Find by id", "Create student","Delete student", "Exit"));
+
+    //To Do: usuwanie studenta, findAndRemove
 
     public void run() {
         showGreetingMessage();
@@ -48,6 +52,9 @@ public class StudentsCatalogApplication {
                     studentsService.createStudent(new Student());
                     break;
                 case 4:
+                    studentsService.deleteStudentByID();
+                    break;
+                case 5:
                     System.exit(0);
                 default:
                     showOutOfRangeMessage();
