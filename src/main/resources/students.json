@@ -1,1 +1,4 @@
 {"schemaVersion":"1.0"}
+{"id":1000,"firstName":"anna","secondName":null,"department":null,"birthDate":null,"semester":0,"livesInDormitory":false}
+{"id":1002,"firstName":"edd","secondName":null,"department":null,"birthDate":null,"semester":0,"livesInDormitory":false}
+{"id":1003,"firstName":"er","secondName":null,"department":null,"birthDate":null,"semester":0,"livesInDormitory":false}
