@@ -29,7 +29,14 @@ public class StudentsCatalogApplication {
                 .collect(Collectors.toList());
     }
 
-    List<MenuItem> menuItemList = buildMenuItemLists(List.of("Show all students", "Find by id", "Create student","Delete student", "Exit"));
+    List<MenuItem> menuItemList = buildMenuItemLists(List.of(
+            "Show all students",
+            "Find by id",
+            "Find by first letter of first name",
+            "Create student",
+            "Delete student",
+            "Find student above age",
+            "Exit"));
 
     //To Do: usuwanie studenta, findAndRemove
 
@@ -49,12 +56,18 @@ public class StudentsCatalogApplication {
                     studentsService.findStudentById();
                     break;
                 case 3:
-                    studentsService.createStudent(new Student());
+                    showListOfStudents(studentsService.findStudentsByFirstLetterOfFirstName());
                     break;
                 case 4:
-                    studentsService.deleteStudentByID();
+                    studentsService.createStudent(new Student());
                     break;
                 case 5:
+                    studentsService.deleteStudentByID();
+                    break;
+                case 6:
+                    showListOfStudents(studentsService.findStudentsAboveAge());
+                    break;
+                case 7:
                     System.exit(0);
                 default:
                     showOutOfRangeMessage();

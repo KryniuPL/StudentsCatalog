@@ -39,7 +39,8 @@ public class ConsoleUiUtils {
         studentsList.forEach(student -> {
             var firstName = student.getFirstName();
             var secondName = student.getSecondName() == null ? "" : student.getSecondName();
-            System.out.println("[" + student.getId() + "] " + firstName + " " + secondName);
+            var birthDate = student.getBirthDate();
+            System.out.println("[" + student.getId() + "] " + firstName + " " + secondName + ", birth date: " + birthDate);
         });
     }
 

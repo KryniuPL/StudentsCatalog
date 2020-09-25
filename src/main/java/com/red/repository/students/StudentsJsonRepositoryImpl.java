@@ -37,4 +37,9 @@ public class StudentsJsonRepositoryImpl implements StudentsRepository {
     public Student findById(Long id) {
         return jsonDBTemplate.findById(id, Student.class);
     }
+
+    @Override
+    public Student findByFirstLetter(char firstLetter) {
+        return null;
+    }
 }
