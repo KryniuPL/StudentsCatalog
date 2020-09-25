@@ -1,4 +1,10 @@
 {"schemaVersion":"1.0"}
-{"id":1000,"firstName":"anna","secondName":null,"department":null,"birthDate":null,"semester":0,"livesInDormitory":false}
-{"id":1002,"firstName":"edd","secondName":null,"department":null,"birthDate":null,"semester":0,"livesInDormitory":false}
-{"id":1003,"firstName":"er","secondName":null,"department":null,"birthDate":null,"semester":0,"livesInDormitory":false}
+{"id":1000,"firstName":"anna","secondName":null,"department":null,"birthDate":[1999,12,12],"semester":0,"livesInDormitory":false}
+{"id":1002,"firstName":"edd","secondName":null,"department":null,"birthDate":[2010,12,12],"semester":0,"livesInDormitory":false}
+{"id":1004,"firstName":"tytus","secondName":null,"department":null,"birthDate":[2002,12,12],"semester":0,"livesInDormitory":false}
+{"id":1005,"firstName":"adam","secondName":null,"department":null,"birthDate":[1990,12,12],"semester":0,"livesInDormitory":false}
+{"id":1006,"firstName":"ada","secondName":null,"department":null,"birthDate":[2008,12,12],"semester":0,"livesInDormitory":false}
+{"id":1007,"firstName":"tyryryry","secondName":null,"department":null,"birthDate":[2010,12,12],"semester":0,"livesInDormitory":false}
+{"id":1008,"firstName":"sdfsdf","secondName":null,"department":null,"birthDate":[1990,12,12],"semester":0,"livesInDormitory":false}
+{"id":1009,"firstName":"janko","secondName":null,"department":null,"birthDate":[2001,1,1],"semester":0,"livesInDormitory":false}
+{"id":1010,"firstName":"jack","secondName":null,"department":null,"birthDate":[1989,9,9],"semester":0,"livesInDormitory":false}

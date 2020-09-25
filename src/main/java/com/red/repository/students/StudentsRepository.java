@@ -9,4 +9,5 @@ public interface StudentsRepository {
     void createStudent(Student student);
     void removeStudent(Student student);
     Student findById(Long id);
+    Student findByFirstLetter(char firstLetter);
 }
