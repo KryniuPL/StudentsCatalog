@@ -24,6 +24,11 @@ public class ConsoleUiUtils {
     private static final String QUERY_MESSAGE = "Select an option: ";
     private static final String ERROR_MESSAGE = "ERROR";
     private static final String OUT_OF_RANGE_MESSAGE = "You selected an option which is not available";
+    private static final String STUDENT_FOUND_MESSAGE = "STUDENT FOUND";
+    private static final String STUDENT_NOT_FOUND_MESSAGE = "STUDENT NOT FOUND";
+    private static final String INVALID_CHARACTERS_MESSAGE = "First name contains invalid characters. Student was not created.";
+    private static final String STUDENT_ID_MESSAGE = "Type student id: ";
+    private static final String STUDENT_FIRST_NAME_MESSAGE = "Type student firstName: ";
 
     public static void showGreetingMessage() {
         System.out.println(GREETING_MESSAGE + "\n");
@@ -48,11 +53,34 @@ public class ConsoleUiUtils {
     }
 
     public static void showErrorMessage() {
-        System.out.println(ERROR_MESSAGE);
+        System.out.println(ANSI_RED + ERROR_MESSAGE);
     }
 
     public static void showOutOfRangeMessage() {
         System.out.println(OUT_OF_RANGE_MESSAGE);
+    }
+
+    public static void showStudentFoundMessage() {
+        System.out.println(ANSI_GREEN + STUDENT_FOUND_MESSAGE);
+    }
+    public static void showStudentNotFoundMessage() {
+        System.out.println(ANSI_RED + STUDENT_NOT_FOUND_MESSAGE);
+    }
+
+    public static void showInvalidCharactersMessage() {
+        System.out.println(INVALID_CHARACTERS_MESSAGE);
+    }
+
+    public static void showTypeStudentIdMessage() {
+        System.out.println(STUDENT_ID_MESSAGE);
+    }
+
+    public static void showTypeStudentFirstNameMessage() {
+        System.out.println(STUDENT_FIRST_NAME_MESSAGE);
+    }
+
+    public static void showStudentDeletedMessage(String studentFirstName) {
+        System.out.println("Student " + studentFirstName + " was deleted");
     }
 
     public static int getUserInput(List<MenuItem> menuItems) {
