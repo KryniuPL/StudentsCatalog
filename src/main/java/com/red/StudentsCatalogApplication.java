@@ -8,13 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import static com.red.utils.ConsoleUiUtils.getUserInput;
-import static com.red.utils.ConsoleUiUtils.showGreetingMessage;
-import static com.red.utils.ConsoleUiUtils.showListOfStudents;
-import static com.red.utils.ConsoleUiUtils.showMenuItems;
-import static com.red.utils.ConsoleUiUtils.showOutOfRangeMessage;
-import static com.red.utils.ConsoleUiUtils.showQueryMessage;
-
+import static com.red.utils.ConsoleUiUtils.*;
 public class StudentsCatalogApplication {
 
     private static Scanner scanner = new Scanner(System.in);

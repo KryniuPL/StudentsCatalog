@@ -9,6 +9,8 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import static com.red.utils.ConsoleUiUtils.*;
+
 public class StudentsService {
 
     private final StudentsRepository studentsRepository = new StudentsJsonRepositoryImpl();
@@ -29,15 +31,15 @@ public class StudentsService {
     }
 
     public void findStudentById() {
-        System.out.println("Type student id: ");
+        showTypeStudentIdMessage();
         Long id = scanner.nextLong();
         Student student = studentsRepository.findById(id);
 
 
         if (student != null) {
-            System.out.println("STUDENT FOUND");
+            showStudentFoundMessage();
             System.out.println(student);
-        } else System.out.println("STUDENT NOT FOUND");
+        } else showStudentNotFoundMessage();
     }
 
     public List<Student> findStudentsByLimit(int limit) {
@@ -45,7 +47,7 @@ public class StudentsService {
     }
 
     public void createStudent(Student student) {
-        System.out.println("Type student firstName: ");
+        showTypeStudentFirstNameMessage();
         String firstName = scanner.next();
 
         if (checkIfStudentNameIsCorrect(firstName)) {
@@ -54,20 +56,21 @@ public class StudentsService {
 
             System.out.println(student);
 
-        } else System.out.println("First name contains invalid characters. Student was not created.");
+        } else showInvalidCharactersMessage();
 
     }
 
     public void deleteStudentByID() {
-        System.out.println("Type student id: ");
+        showTypeStudentIdMessage();
         Long id = scanner.nextLong();
         Student student = studentsRepository.findById(id);
 
         if (student != null) {
-            System.out.println("STUDENT FOUND");
+            showStudentFoundMessage();
             studentsRepository.removeStudent(student);
-            System.out.println("Student " + student.getFirstName() + " was deleted");
-        } else System.out.println("STUDENT NOT FOUND");
+            showStudentDeletedMessage(student.getFirstName());
+
+        } else showStudentNotFoundMessage();
     }
 
     private boolean checkIfStudentNameIsCorrect(String firstName) {
