@@ -28,16 +28,8 @@ public class StudentsService {
                 .collect(Collectors.toList());
     }
 
-    public void findStudentById() {
-        System.out.println("Type student id: ");
-        Long id = scanner.nextLong();
-        Student student = studentsRepository.findById(id);
-
-
-        if (student != null) {
-            System.out.println("STUDENT FOUND");
-            System.out.println(student);
-        } else System.out.println("STUDENT NOT FOUND");
+    public Student findStudentById(Long id) {
+        return studentsRepository.findById(id);
     }
 
     public List<Student> findStudentsByLimit(int limit) {
