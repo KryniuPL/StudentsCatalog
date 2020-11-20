@@ -1,24 +1,17 @@
 package com.red;
 
-import com.red.commands.*;
+import com.red.commands.Command;
 import com.red.model.MenuItem;
-import com.red.model.Student;
-import com.red.service.StudentsService;
 
+import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import static com.red.utils.ConsoleUiUtils.getUserInput;
-import static com.red.utils.ConsoleUiUtils.showGreetingMessage;
-import static com.red.utils.ConsoleUiUtils.showListOfStudents;
-import static com.red.utils.ConsoleUiUtils.showMenuItems;
-import static com.red.utils.ConsoleUiUtils.showOutOfRangeMessage;
-import static com.red.utils.ConsoleUiUtils.showQueryMessage;
+import static com.red.utils.ConsoleUiUtils.*;
 
 public class StudentsCatalogApplication {
 
-    private List<MenuItem> buildMenuItemLists(List<String> items) {
+    private static List<MenuItem> buildMenuItemLists(List<String> items) {
         return items.stream()
                 .map(item -> {
                     var index = items.indexOf(item) + 1;
@@ -27,41 +20,26 @@ public class StudentsCatalogApplication {
                 .collect(Collectors.toList());
     }
 
-//    List<MenuItem> menuItemList = buildMenuItemLists(List.of("Show all students", "Find by id", "Create student","Delete student", "Exit"));
+    private static final Command[] commands = Command.values();
 
-    //To Do: usuwanie studenta, findAndRemove
+    private static final List<MenuItem> menuItemList = buildMenuItemLists(
+            Arrays.stream(commands)
+                    .map(Command::getMessage)
+                    .collect(Collectors.toList())
+    );
 
-    private final Command[] commands = Command.values();
-
-    public void run() {
+    public static void main(String[] args) {
         showGreetingMessage();
-        for (Command command : commands) {
-            System.out.println(command.getMessage());
+
+        while (true) {
+            showMenuItems(menuItemList);
+            showQueryMessage();
+            int scannedInput = getUserInput(menuItemList);
+            if (menuItemList.stream().map(MenuItem::getIndex).collect(Collectors.toList()).contains(scannedInput)) {
+                commands[--scannedInput].getCommandProvider().execute();
+            } else {
+                showOutOfRangeMessage();
+            }
         }
-//        while (true) {
-//            showMenuItems(menuItemList);
-//            showQueryMessage();
-//            int scannedInput = getUserInput(menuItemList);
-//
-//            switch (scannedInput) {
-//                case 1:
-//                    showListOfStudents(studentsService.findAllStudents());
-//                    break;
-//                case 2:
-//                    studentsService.findStudentById();
-//                    break;
-//                case 3:
-//                    studentsService.createStudent(new Student());
-//                    break;
-//                case 4:
-//                    studentsService.deleteStudentByID();
-//                    break;
-//                case 5:
-//                    System.exit(0);
-//                default:
-//                    showOutOfRangeMessage();
-//                    continue;
-//            }
-//        }
     }
 }
